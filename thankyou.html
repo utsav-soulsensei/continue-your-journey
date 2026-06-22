@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoulSensei — You're In!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app fade-in">
+    <div class="brand">
+      <svg class="brand__mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3c-1.6 2-1.6 4 0 6 1.6-2 1.6-4 0-6Z" fill="#fff"/>
+        <path d="M5 11c2.4-.4 4 .6 5 2.6-2.4.4-4-.6-5-2.6Zm14 0c-2.4-.4-4 .6-5 2.6 2.4.4 4-.6 5-2.6Z" fill="#fff"/>
+        <path d="M4 14c2.6 4 5.3 6 8 6s5.4-2 8-6c-2.6 1.2-5.3 1.8-8 1.8S6.6 15.2 4 14Z" fill="#fff"/>
+      </svg>
+      <span class="brand__name">SoulSensei</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12.5l4.2 4.2L19 7" stroke="#4a1322" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1 class="headline">You're all set!</h1>
+    <p class="lede">
+      Your seat for the
+      <strong>5 Complimentary LIVE Workshops</strong>
+      is reserved. Check your email for the details.
+    </p>
+
+    <p class="countdown">Redirecting you to SoulSensei in <b><span id="count">15</span></b> seconds…</p>
+    <a class="btn" href="https://soulsensei.in" id="goNow">Go to SoulSensei now</a>
+
+    <div class="spacer"></div>
+  </main>
+
+  <script>
+    (function () {
+      var DEST = "https://soulsensei.in";
+      var seconds = 15;
+      var el = document.getElementById("count");
+      var timer = setInterval(function () {
+        seconds -= 1;
+        if (el) el.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.href = DEST;
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>

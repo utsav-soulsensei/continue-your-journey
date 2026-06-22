@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoulSensei — Claim Your Free Workshops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app fade-in">
+    <div class="brand">
+      <svg class="brand__mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3c-1.6 2-1.6 4 0 6 1.6-2 1.6-4 0-6Z" fill="#fff"/>
+        <path d="M5 11c2.4-.4 4 .6 5 2.6-2.4.4-4-.6-5-2.6Zm14 0c-2.4-.4-4 .6-5 2.6 2.4.4 4-.6 5-2.6Z" fill="#fff"/>
+        <path d="M4 14c2.6 4 5.3 6 8 6s5.4-2 8-6c-2.6 1.2-5.3 1.8-8 1.8S6.6 15.2 4 14Z" fill="#fff"/>
+      </svg>
+      <span class="brand__name">SoulSensei</span>
+    </div>
+
+    <h1 class="headline" style="font-size:38px">Claim your<br />free workshops</h1>
+    <p class="lede">Just a few details and your seat for the<br />5 LIVE Workshops is reserved.</p>
+
+    <form id="leadForm" class="card" novalidate>
+      <div class="field" data-field="name">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+        <span class="error">Please enter your name.</span>
+      </div>
+
+      <div class="field" data-field="email">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <span class="error">Please enter a valid email address.</span>
+      </div>
+
+      <div class="field" data-field="phone">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="10-digit mobile number" required />
+        <span class="error">Please enter a valid phone number.</span>
+      </div>
+
+      <button class="btn" type="submit" id="submitBtn">Reserve My Seat</button>
+      <p class="note">We'll send your workshop access to the email above.</p>
+    </form>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
