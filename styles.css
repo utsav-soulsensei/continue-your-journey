@@ -45,20 +45,13 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   margin-bottom: 34px;
 }
-.brand__mark {
-  width: 26px;
-  height: 26px;
-  opacity: 0.95;
-}
-.brand__name {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: #fff;
+.brand__logo {
+  height: 24px;
+  width: auto;
+  display: block;
 }
 
 /* ---- Headings ---- */
