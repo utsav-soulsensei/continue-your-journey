@@ -16,6 +16,9 @@
 var SHEET_ID = "1V5go6_MFTroKkQkIo0BVeBwhNCeuw0hb0l90Pp2FXEs";
 var SHEET_NAME = "Leads";
 
+// Column order: A Timestamp | B Name | C Email | D Phone | E Source
+var PHONE_COL = 4;
+
 function getSheet_() {
   var ss = SpreadsheetApp.openById(SHEET_ID);
   var sheet = ss.getSheetByName(SHEET_NAME);
@@ -23,10 +26,13 @@ function getSheet_() {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow(["Timestamp", "Name", "Email", "Phone", "Source"]);
   }
+  // Force the whole Phone column to plain text so a leading "+" (e.g. +91...)
+  // is stored literally instead of being parsed as a formula.
+  sheet.getRange(1, PHONE_COL, sheet.getMaxRows(), 1).setNumberFormat("@");
   return sheet;
 }
 
-/** Run once to create the sheet + header row. */
+/** Run once to create the sheet + header row (and fix the Phone column format). */
 function setup() {
   getSheet_();
 }
@@ -41,13 +47,19 @@ function doPost(e) {
     }
 
     var sheet = getSheet_();
-    sheet.appendRow([
+    var row = sheet.getLastRow() + 1;
+
+    // Ensure this row's Phone cell is plain text BEFORE writing, so "+91 ..."
+    // is not interpreted as a formula (avoids "Formula Parse Error").
+    sheet.getRange(row, PHONE_COL).setNumberFormat("@");
+
+    sheet.getRange(row, 1, 1, 5).setValues([[
       new Date(),
       p.name || "",
       p.email || "",
       p.phone || "",
       p.source || ""
-    ]);
+    ]]);
 
     return json_({ ok: true });
   } catch (err) {
