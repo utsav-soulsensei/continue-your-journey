@@ -17,6 +17,12 @@ var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqIRJSbufUEhcczdD
     if (wrap) wrap.classList.toggle("invalid", invalid);
   }
 
+  // Normalize a country code to "+<digits>" form (e.g. "91" -> "+91").
+  function normalizeCC(cc) {
+    var digits = (cc || "").replace(/\D/g, "");
+    return digits ? "+" + digits : "";
+  }
+
   function validate(data) {
     var ok = true;
     if (!data.name || data.name.trim().length < 2) { setInvalid("name", true); ok = false; }
@@ -25,9 +31,11 @@ var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqIRJSbufUEhcczdD
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { setInvalid("email", true); ok = false; }
     else setInvalid("email", false);
 
+    var ccDigits = (data.cc || "").replace(/\D/g, "");
     var digits = (data.phone || "").replace(/\D/g, "");
-    if (digits.length < 7 || digits.length > 15) { setInvalid("phone", true); ok = false; }
-    else setInvalid("phone", false);
+    if (ccDigits.length < 1 || ccDigits.length > 4 || digits.length < 7 || digits.length > 15) {
+      setInvalid("phone", true); ok = false;
+    } else setInvalid("phone", false);
 
     return ok;
   }
@@ -38,10 +46,13 @@ var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqIRJSbufUEhcczdD
     var data = {
       name: form.name.value.trim(),
       email: form.email.value.trim(),
+      cc: form.cc.value.trim(),
       phone: form.phone.value.trim()
     };
 
     if (!validate(data)) return;
+
+    var fullPhone = normalizeCC(data.cc) + " " + data.phone.replace(/\D/g, "");
 
     btn.disabled = true;
     var originalLabel = btn.textContent;
@@ -50,7 +61,7 @@ var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqIRJSbufUEhcczdD
     var payload = new FormData();
     payload.append("name", data.name);
     payload.append("email", data.email);
-    payload.append("phone", data.phone);
+    payload.append("phone", fullPhone);
     payload.append("source", "free-workshops-form");
 
     var done = function () { window.location.href = "thankyou.html"; };

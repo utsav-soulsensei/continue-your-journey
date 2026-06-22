@@ -15,7 +15,7 @@
       <img class="brand__logo" src="Icon.svg" alt="SoulSensei" />
     </div>
 
-    <h1 class="headline" style="font-size:38px">Claim your<br />free workshops</h1>
+    <h1 class="headline" style="font-size:clamp(30px,8vw,38px)">Claim your<br />free workshops</h1>
     <p class="lede">Just a few details and your seat for the<br />5 LIVE Workshops is reserved.</p>
 
     <form id="leadForm" class="card" novalidate>
@@ -33,7 +33,10 @@
 
       <div class="field" data-field="phone">
         <label for="phone">Phone Number</label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="10-digit mobile number" required />
+        <div class="phone-row">
+          <input id="cc" name="cc" class="cc" type="tel" inputmode="tel" autocomplete="tel-country-code" value="+91" aria-label="Country code" />
+          <input id="phone" name="phone" class="phone-num" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="Mobile number" required />
+        </div>
         <span class="error">Please enter a valid phone number.</span>
       </div>
 
