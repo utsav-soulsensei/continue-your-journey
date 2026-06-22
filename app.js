@@ -4,7 +4,7 @@
    1. Deploy google-apps-script.gs as a Web App (see README.md)
    2. Paste the deployment /exec URL below.
    ========================================================= */
-var SHEET_ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqIRJSbufUEhcczdDGCJM7EjZRVGkwBm2o6xIFEaeGcA5tVCih4Op8BbVb6Tqv3grwUA/exec";
 
 (function () {
   var form = document.getElementById("leadForm");
