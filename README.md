@@ -1,15 +1,15 @@
 # SoulSensei — Free Workshops Funnel
 
-A 3-screen flow that matches the SoulSensei theme:
+A 2-screen flow that matches the SoulSensei theme. Users are redirected in from
+elsewhere and land directly on the form.
 
-1. **`index.html`** — landing with the *"5 Complimentary LIVE Workshops"* CTA.
-2. **`form.html`** — collects **Name, Email, Phone** and writes them to a Google Sheet.
-3. **`thankyou.html`** — confirmation screen that auto-redirects to `https://soulsensei.in` after **7 seconds**.
+1. **`index.html`** — the lead form. Collects **Name, Email, Phone** and writes them to a Google Sheet.
+2. **`thankyou.html`** — confirmation screen that auto-redirects to `https://soulsensei.in` after **7 seconds**.
 
 ```
-index.html  ──CTA──▶  form.html  ──submit──▶  Google Sheet
-                                   │
-                                   └──▶  thankyou.html  ──7s──▶  soulsensei.in
+(external link)  ──▶  index.html (form)  ──submit──▶  Google Sheet
+                                            │
+                                            └──▶  thankyou.html  ──7s──▶  soulsensei.in
 ```
 
 ## Connect the Google Sheet (one-time)

@@ -15,23 +15,33 @@
       <img class="brand__logo" src="Icon.svg" alt="SoulSensei" />
     </div>
 
-    <h1 class="headline">Thank you for<br />joining us!</h1>
+    <h1 class="headline" style="font-size:38px">Claim your<br />free workshops</h1>
+    <p class="lede">Just a few details and your seat for the<br />5 LIVE Workshops is reserved.</p>
 
-    <p class="lede">
-      Continue your journey with
-      <strong>5 Complimentary LIVE Workshops</strong>
-      led by SoulSensei's trusted guides
-    </p>
+    <form id="leadForm" class="card" novalidate>
+      <div class="field" data-field="name">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+        <span class="error">Please enter your name.</span>
+      </div>
 
-    <div class="guides">
-      <div class="face"></div>
-      <div class="face"></div>
-      <div class="face"></div>
-      <div class="face"></div>
-      <div class="face"></div>
-    </div>
+      <div class="field" data-field="email">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <span class="error">Please enter a valid email address.</span>
+      </div>
 
-    <a class="btn" href="form.html">Unlock Free Workshops</a>
+      <div class="field" data-field="phone">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="10-digit mobile number" required />
+        <span class="error">Please enter a valid phone number.</span>
+      </div>
+
+      <button class="btn" type="submit" id="submitBtn">Reserve My Seat</button>
+      <p class="note">We'll send your workshop access to the email above.</p>
+    </form>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
